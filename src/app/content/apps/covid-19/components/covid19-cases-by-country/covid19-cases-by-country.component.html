@@ -1,0 +1,118 @@
+<!-- SIDENAV HEADER -->
+<ng-container>
+    <div class="widget-group" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+        <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
+
+            <div class="sidenav-header">
+                <!-- CHATS TOOLBAR -->
+                <mat-toolbar>
+
+                    <!-- TOOLBAR BOTTOM -->
+                    <mat-toolbar-row>
+
+                        <!-- SEARCH -->
+                        <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                            <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon class="s-16 secondary-text">search</mat-icon>
+                                <input [(ngModel)]="searchText" type="text" placeholder="Search country" fxFlex>
+                            </div>
+
+                        </div>
+                        <!-- / SEARCH -->
+
+                    </mat-toolbar-row>
+                    <!-- / TOOLBAR BOTTOM -->
+
+                    <mat-toolbar-row>
+
+                        <!-- SEARCH -->
+                        <div fxFlex fxLayout="row">
+                            <button mat-stroked-button class="p-8" style="width: 100%;" color="primary"
+                                (click)="selectCountry(world)" [@animate]="{value:'*',params:{y:'100%'}}">
+
+                                <div fxLayout="row" fxLayoutAlign="start center">
+
+
+                                    <div fxLayout="row" fxFlex>
+
+                                        <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                                            <div class="contact-name text-bold">{{world.name}}</div>
+                                            <div class="contact-last-message font-size-10 hint-text text-bold">New:
+                                                {{world.confirmed.new | number}}
+                                            </div>
+                                        </div>
+
+                                        <div fxLayout="column" fxLayoutAlign="center">
+                                            <div class="contact-last-message-time text-boxed accent">
+                                                {{world.confirmed.total | number}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </button>
+                        </div>
+                        <!-- / SEARCH -->
+
+                    </mat-toolbar-row>
+                </mat-toolbar>
+                <!-- / CHATS TOOLBAR -->
+
+            </div>
+            <!-- / SIDENAV HEADER -->
+            <!-- SIDENAV CONTENT -->
+            <div class="sidenav-content" fusePerfectScrollbar fxFlex>
+
+                <!-- CHATS CONTENT -->
+                <div *fuseIfOnDom [@animateStagger]="{value:'50'}">
+
+                    <!-- CHATS LIST-->
+                    <div class="chat-list" fxLayout="column">
+
+                        <button mat-button color="primary" class="contact"
+                            *ngFor="let country of countries | filter: searchText" (click)="selectCountry(country)"
+                            [@animate]="{value:'*',params:{y:'100%'}}">
+
+                            <div fxLayout="row" fxLayoutAlign="start center">
+
+
+                                <div fxLayout="row" fxFlex>
+
+                                    <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                                        <div class="contact-name text-bold">{{country.Country}}</div>
+                                        <div class="contact-last-message font-size-10 hint-text text-bold">New:
+                                            {{country.NewConfirmed | number}}</div>
+                                    </div>
+
+                                    <div fxLayout="column" fxLayoutAlign="center">
+                                        <div class="contact-last-message-time text-boxed accent">
+                                            {{country.TotalConfirmed | number}}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </button>
+
+                    </div>
+                    <!-- / CHATS LIST-->
+
+                </div>
+                <!-- / CHATS CONTENT -->
+
+            </div>
+            <!-- / SIDENAV CONTENT -->
+        </div>
+        <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="70">
+            <ng-container>
+                <fuse-covid19-world-map style="padding-left: 16px;" [countries]="countries"
+                    [selectedCountry]="selectedCountry">
+                </fuse-covid19-world-map>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

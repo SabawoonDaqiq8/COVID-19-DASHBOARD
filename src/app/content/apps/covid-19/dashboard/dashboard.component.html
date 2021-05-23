@@ -1,0 +1,100 @@
+<div class="page-layout simple fullwidth" *ngIf="countries">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+        <h2>{{'COVID.MAIN-HEADER' | translate}}
+        </h2>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <div class="widget-group" fxLayout="row wrap" fxFlex="100" *fuseIfOnDom [@animateStagger]="{value:'50'}">
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="35">
+                <mat-card class="example-card mb-24 mr-16">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.PERCENTAGE-CASES' | translate}}<span class="hint-text">-
+                                {{'COVID.WORLDWIDE' | translate}}</span></mat-card-title>
+                        <mat-card-subtitle>{{'COVID.DISTRIBUTION-PERCENTAGE' | translate}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-percentage-of-cases [metrics]="metrics" *ngIf="metrics">
+                        </fuse-covid19-percentage-of-cases>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
+                <mat-card class="example-card mb-24 mr-16 h-400">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.COVID-19' | translate}} <span class="hint-text">-
+                                {{'COVID.WORLDWIDE' | translate}}</span></mat-card-title>
+                        <mat-card-subtitle>{{'COVID.COVID-MESSAGE' | translate}}
+                            <br>
+                            <br>
+                            {{'COVID.COVID-MESSAGE-2' | translate}} <a
+                                href="https://api.covid19api.com/summary">{{'COVID.HERE' | translate}}</a>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-cases-worldwide [metrics]="metrics" *ngIf="metrics">
+                        </fuse-covid19-cases-worldwide>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="35">
+                <mat-card class="example-card mb-24">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.PERCENTAGE-CASES' | translate}} <span class="hint-text">-
+                                {{'COVID.WORLDWIDE' | translate}}</span></mat-card-title>
+                        <mat-card-subtitle>{{'COVID.DISTRIBUTION-PERCENTAGE' | translate}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-recovery-ratio [metrics]="metrics" *ngIf="metrics">
+                        </fuse-covid19-recovery-ratio>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="100">
+                <mat-card class="mb-24">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.CASES-COUNTRY' | translate}}</mat-card-title>
+                        <mat-card-subtitle>{{'COVID.TOTAL-COUNTRIES' | translate}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-cases-by-country [countries]="countries" [world]="world">
+                        </fuse-covid19-cases-by-country>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="100">
+                <mat-card class="mb-24">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.HISTORY-GROWTH' | translate}}</mat-card-title>
+                        <mat-card-subtitle>{{'COVID.COVID-GROWTH' | translate}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-history-world>
+                        </fuse-covid19-history-world>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50">
+                <mat-card class="mb-24">
+                    <mat-card-header>
+                        <mat-card-title>{{'COVID.TOP-COUNTRIES' | translate}}
+                        </mat-card-title>
+                        <mat-card-subtitle>{{'COVID.TOP-20-COUNTRIES' | translate}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="mx-16">
+                        <fuse-covid19-countries-bars [countries]="countries" [world]="world" [top]="20">
+                        </fuse-covid19-countries-bars>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <!-- / CONTENT -->
+
+
+</div>

@@ -1,0 +1,27 @@
+        <p class="m-0 text-bold text-uppercase">Global Confirmed Cases</p>
+        <p class="font-size-36 mb-24 mt-0 text-bold">{{ confirmed.total | number }}</p>
+        <div fxLayout="row" fxLayoutGap="1px" style="width: 100%">
+            <ng-container *ngFor="let stack of stacked">
+                <div [fxFlex]="stack.value/confirmed.total * 100" class="h-8 border-radius-16 {{stack.type}}"></div>
+            </ng-container>
+        </div>
+        <ul class="list-unstyled cases-summary pl-20">
+            <li *ngFor="let metric of metricsToDisplay"
+                [ngStyle]="{'color': metric.type == 'active' ? '#059be5' : metric.type == 'recovered' ? '#00BCD4' : '#F44335'}"
+                class="mb-2 d-flex align-items-center text-capitalize justify-content-between font-size-18">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="row" fxFlex>
+                        <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                            <div class="contact-name text-bold">{{metric.type}}</div>
+                        </div>
+
+                        <div fxLayout="column" fxLayoutAlign="center">
+                            <div class="font-size-18 text-bold primary-fg">
+                                {{metric.total | number}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+        </ul>
