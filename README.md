@@ -53,7 +53,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](screenshots/screenshot-dashboard.png)
+<img src="screenshots/screenshot-dashboard.png" alt="Image" width="200" height="200">
 
 There are many great COVID-19 Dashboards available on GitHub. I created this one for a project of mine for a job interview. I want to create a COVID-19 Dashboard so amazing that it will be the best one among the candidates.
 
